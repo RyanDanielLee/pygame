@@ -31,9 +31,9 @@ class GameScreen(BaseScreen):
         # Set background color
         screen.fill(WHITE)
 
-        # Draw platforms directly on the screen
+        # Draw platform images
         for platform in self.level.get_platforms():
-            pygame.draw.rect(screen, platform.color, platform.rect)
+            screen.blit(platform.image, platform.rect.topleft)
 
         # Draw player sprite
         self.all_sprites.draw(screen)

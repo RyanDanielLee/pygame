@@ -12,14 +12,12 @@ class Level:
             reader = csv.DictReader(file)
             for row in reader:
                 x = int(row['x'])
-                y = int(row[' y'].strip())  # Remove leading/trailing spaces
-                width = int(row[' width'].strip())
-                height = int(row[' height'].strip())
-                color_values = [int(val.strip()) for val in row.get('color', '0,255,0').split(',')]
-                color = tuple(color_values[:3])  # Take the first three values (RGB)
-
-                print(color)  # Add this line to inspect the color
-                self.platforms.append(Platform(x, y, width, height, color))
+                y = int(row['y'].strip())
+                width = int(row['width'].strip())
+                height = int(row['height'].strip())
+                image_path = row.get('image_path', '')  # Add a new column 'image_path' to your CSV file
+                scale = float(row.get('scale', '1.0'))  # Add a new column 'scale' to your CSV file, default is 1.0
+                self.platforms.append(Platform(x, y, width, height, image_path, scale))
 
     def get_platforms(self):
         return self.platforms
