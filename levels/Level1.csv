@@ -1,5 +1,5 @@
 x,y,width,height,image_path
-0,500,800,20,images/platform.png
-200,400,200,20,images/platform.png
-400,300,200,20,images/platform.png
-0,200,300,20,images/platform.png
+0,500,800,20,images/foot.png
+200,400,200,20,images/foot.png
+400,300,200,20,images/foot.png
+0,200,300,20,images/foot.png
