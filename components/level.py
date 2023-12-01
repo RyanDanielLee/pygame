@@ -16,8 +16,7 @@ class Level:
                 width = int(row['width'].strip())
                 height = int(row['height'].strip())
                 image_path = row.get('image_path', '')  # Add a new column 'image_path' to your CSV file
-                scale = float(row.get('scale', '1.0'))  # Add a new column 'scale' to your CSV file, default is 1.0
-                self.platforms.append(Platform(x, y, width, height, image_path, scale))
+                self.platforms.append(Platform(x, y, width, height, image_path))  # Removed 'scale'
 
     def get_platforms(self):
         return self.platforms
