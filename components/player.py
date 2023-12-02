@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH // 2, 100)
         self.velocity_x = 0
-        self.velocity_y = 0
+        self.velocity_y = -1  # Add a small initial velocity in the y direction
         self.gravity = 1
         self.jump_power = -15
         self.is_jumping = False
@@ -26,13 +26,19 @@ class Player(pygame.sprite.Sprite):
             self.velocity_y = self.jump_power
             self.is_jumping = True
 
+
     def handle_platform_collision(self, platform_hits):
-        if self.velocity_y > 0:
-            for platform in platform_hits:
-                if self.rect.bottom <= platform.rect.top + 10:
-                    self.rect.bottom = platform.rect.top
-                    self.velocity_y = 0
-                    self.is_jumping = False
+        for platform in platform_hits:
+            # If the player is moving downwards (falling or jumping down)
+            if self.velocity_y >= 0:
+                self.rect.bottom = platform.rect.top
+                self.velocity_y = 0
+                self.is_jumping = False
+            # If the player is moving upwards (jumping up)
+            elif self.velocity_y < 0:
+                self.rect.top = platform.rect.bottom
+                self.velocity_y = 0
+
 
     def update(self):
         self.velocity_y += self.gravity
