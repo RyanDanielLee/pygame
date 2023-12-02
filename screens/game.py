@@ -28,7 +28,8 @@ class GameScreen(BaseScreen):
 
         # Check if the player has fallen off the edge
         if self.player.rect.y > SCREEN_HEIGHT:
-            self.next_screen = EndScreen()
+            # Pass the GameScreen class to the EndScreen constructor
+            self.next_screen = EndScreen(self.__class__)
 
         # Move the game world in the opposite direction of the player
         for platform in self.level.get_platforms():

@@ -14,10 +14,10 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Simple Platformer")
 
-    clock = pygame.time.Clock()
+    clock = pygame.time.Clock()  # Create a Clock object
 
-    # Create a StartScreen instance with the GameScreen class
-    current_screen = StartScreen(GameScreen, EndScreen)
+    # Pass the GameScreen class to the EndScreen constructor
+    current_screen = StartScreen(GameScreen, EndScreen(GameScreen))
 
     while True:
         current_screen.process_input()
@@ -25,7 +25,7 @@ def main():
         current_screen.render(screen)
 
         pygame.display.flip()
-        clock.tick(FPS)
+        clock.tick(FPS)  # Use the tick method to control the frame rate
 
         if current_screen.next_screen:
             current_screen = current_screen.next_screen
