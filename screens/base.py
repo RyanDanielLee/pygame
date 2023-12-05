@@ -1,7 +1,6 @@
 # screens/base.py
 import pygame
 
-
 class BaseScreen:
     def __init__(self):
         self.next_screen = self
