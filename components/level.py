@@ -15,11 +15,13 @@ class Level:
                 y = int(row['y'].strip())
                 width = int(row['width'].strip())
                 height = int(row['height'].strip())
-                image_path = row.get('image_path', '')  # Add a new column 'image_path' to your CSV file
+                image_path = row.get('image_path', '')
                 if row.get('type') == 'end':
-                    self.platforms.append(EndPlatform(x, y, width, height, image_path))  # Create an EndPlatform
+                    # Add platform to EndPlatforms if it is type of end
+                    self.platforms.append(EndPlatform(x, y, width, height, image_path)) 
                 else:
-                    self.platforms.append(Platform(x, y, width, height, image_path))  # Removed 'scale'
+                    # Add platform to Platforms (regular platforms) if it is a regular platform
+                    self.platforms.append(Platform(x, y, width, height, image_path)) 
 
 
 
