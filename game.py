@@ -24,7 +24,7 @@ def main():
     clock = pygame.time.Clock()  
 
     # Pass the GameScreen class to the EndScreen constructor
-    current_screen = StartScreen(GameScreen, EndScreen(GameScreen))
+    current_screen = StartScreen(GameScreen, EndScreen)
 
     while True:
         current_screen.process_input() 

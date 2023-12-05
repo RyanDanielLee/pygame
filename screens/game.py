@@ -14,6 +14,7 @@ class GameScreen(BaseScreen):
         self.background = pygame.transform.scale(self.background, (SCREEN_WIDTH, SCREEN_HEIGHT))
         self.all_sprites = pygame.sprite.Group()
         self.level = Level(level_file)
+        self.start_time = pygame.time.get_ticks()
 
         # Create player
         self.player = Player()
@@ -36,19 +37,19 @@ class GameScreen(BaseScreen):
         # Check if the player has fallen off platforms
         if self.player.rect.y > SCREEN_HEIGHT:
             # Pass the GameScreen class to the EndScreen constructor
-            self.next_screen = EndScreen(self.__class__)
+            self.next_screen = EndScreen(self.__class__, self.elapsed_time)  # Pass elapsed_time here
 
         # Check if the player collides with any platforms
         platform_hits = pygame.sprite.spritecollide(self.player, self.level.get_platforms(), False)
         for platform in platform_hits:
             if isinstance(platform, EndPlatform):
-                self.next_screen = EndScreen(self.__class__)
+                self.next_screen = EndScreen(self.__class__, self.elapsed_time)  # Pass elapsed_time here
             else:
                 self.player.handle_platform_collision(platform_hits)
 
+        self.elapsed_time = (pygame.time.get_ticks() - self.start_time) / 1000
 
     def render(self, screen):
-
         screen.blit(self.background, (0, 0))
 
         # Draw platform images
