@@ -1,0 +1,6 @@
+x,y,width,height,image_path,type
+0,500,800,20,images/foot.png,regular
+200,400,200,20,images/foot.png,regular
+400,300,200,20,images/foot.png,regular
+600,200,200,20,images/foot.png,regular
+800,100,200,20,images/foot.png,end

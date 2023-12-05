@@ -1,6 +1,6 @@
 # screens/start.py
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, LEVEL
 from .base import BaseScreen
 
 class StartScreen(BaseScreen):
@@ -17,7 +17,7 @@ class StartScreen(BaseScreen):
         keys = pygame.key.get_pressed()
         # If the space bar is pressed, switch to the main game screen
         if keys[pygame.K_SPACE]:
-            self.next_screen = self.game_screen_class("levels/level1.csv")
+            self.next_screen = self.game_screen_class(LEVEL)
             # Pass EndScreen class to GameScreen for later use
             self.next_screen.end_screen_class = self.end_screen_class(0)
 

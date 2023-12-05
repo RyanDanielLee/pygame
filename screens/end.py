@@ -1,6 +1,6 @@
 # screens/end.py
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, LEVEL
 from .base import BaseScreen
 
 class EndScreen(BaseScreen):
@@ -16,7 +16,7 @@ class EndScreen(BaseScreen):
         super().process_input()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
-            self.next_screen = self.game_screen_class("levels/level1.csv")
+            self.next_screen = self.game_screen_class(LEVEL)
 
     def render(self, screen):
         screen.fill((255, 255, 255))
