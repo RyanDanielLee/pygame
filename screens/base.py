@@ -14,7 +14,7 @@ class BaseScreen:
     def update(self):
         pass
 
-    def render(self, screen):
+    def render(self):
         pass
 
     def switch_to_next_screen(self):

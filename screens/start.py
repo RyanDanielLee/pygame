@@ -14,11 +14,14 @@ class StartScreen(BaseScreen):
     def process_input(self):
         super().process_input()
         keys = pygame.key.get_pressed()
+        # If the space bar is pressed, switch to the main game screen
         if keys[pygame.K_SPACE]:
             self.next_screen = self.game_screen_class("levels/level1.csv")
             # Pass EndScreen class to GameScreen for later use
             self.next_screen.end_screen_class = self.end_screen_class
 
     def render(self, screen):
-        screen.fill((255, 255, 255))
+        #Background color
+        screen.fill((255, 255, 255)) 
+        # Text message
         screen.blit(self.text, (SCREEN_WIDTH // 2 - self.text.get_width() // 2, SCREEN_HEIGHT // 2 - self.text.get_height() // 2))

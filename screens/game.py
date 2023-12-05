@@ -3,7 +3,7 @@ import pygame
 from components.player import Player
 from components.level import Level
 from components.platform import EndPlatform
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, WHITE
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .base import BaseScreen
 from .end import EndScreen
 
@@ -33,7 +33,7 @@ class GameScreen(BaseScreen):
         # Update camera offset
         self.camera_offset_x = SCREEN_WIDTH // 2 - self.player.rect.x
 
-        # Check if the player has fallen off the edge
+        # Check if the player has fallen off platforms
         if self.player.rect.y > SCREEN_HEIGHT:
             # Pass the GameScreen class to the EndScreen constructor
             self.next_screen = EndScreen(self.__class__)
