@@ -1,6 +1,6 @@
 # components/level.py
 import csv
-from components.platform import Platform
+from components.platform import Platform, EndPlatform
 
 class Level:
     def __init__(self, level_file):
@@ -16,7 +16,12 @@ class Level:
                 width = int(row['width'].strip())
                 height = int(row['height'].strip())
                 image_path = row.get('image_path', '')  # Add a new column 'image_path' to your CSV file
-                self.platforms.append(Platform(x, y, width, height, image_path))  # Removed 'scale'
+                if row.get('type') == 'end':
+                    self.platforms.append(EndPlatform(x, y, width, height, image_path))  # Create an EndPlatform
+                else:
+                    self.platforms.append(Platform(x, y, width, height, image_path))  # Removed 'scale'
+
+
 
     def get_platforms(self):
         return self.platforms
