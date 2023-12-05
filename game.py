@@ -12,7 +12,7 @@ def main():
     from screens.end import EndScreen
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("Simple Platformer")
+    pygame.display.set_caption("Database Hell")
 
     clock = pygame.time.Clock()  # Create a Clock object
 

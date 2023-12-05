@@ -2,15 +2,16 @@
 import pygame
 from components.player import Player
 from components.level import Level
-from components.platform import Platform, EndPlatform
+from components.platform import EndPlatform
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, WHITE
 from .base import BaseScreen
-from .start import StartScreen
 from .end import EndScreen
 
 class GameScreen(BaseScreen):
     def __init__(self, level_file):
         super().__init__()
+        self.background = pygame.image.load('./images/background.png')
+        self.background = pygame.transform.scale(self.background, (SCREEN_WIDTH, SCREEN_HEIGHT))
         self.all_sprites = pygame.sprite.Group()
         self.level = Level(level_file)
 
@@ -46,10 +47,9 @@ class GameScreen(BaseScreen):
                 self.player.handle_platform_collision(platform_hits)
 
 
-
     def render(self, screen):
-        # Set background color
-        screen.fill(WHITE)
+
+        screen.blit(self.background, (0, 0))
 
         # Draw platform images
         for platform in self.level.get_platforms():
@@ -57,4 +57,3 @@ class GameScreen(BaseScreen):
 
         # Draw player sprite
         screen.blit(self.player.image, (SCREEN_WIDTH // 2, self.player.rect.y))
-

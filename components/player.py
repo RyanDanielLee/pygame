@@ -4,8 +4,8 @@ from constants import SCREEN_WIDTH
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.Surface((50, 50))
-        self.image.fill((0, 0, 255))  # Blue color for player
+        self.image = pygame.image.load('images/player.png')  # Load an image
+        self.image = pygame.transform.scale(self.image, (75, 75))  # Scale it to the right size
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH // 2, 100)
         self.velocity_x = 0
