@@ -9,7 +9,9 @@ class StartScreen(BaseScreen):
         self.game_screen_class = game_screen_class
         self.end_screen_class = end_screen_class
         self.font = pygame.font.Font(None, 36)
+        # Start text
         self.text = self.font.render("Press SPACE to start", True, (0, 0, 0))
+        # My name text
         self.name = self.font.render("By: Ryan Lee A01365270", True, (0, 0, 0))
 
     def process_input(self):

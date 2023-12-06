@@ -1,21 +1,11 @@
 import pygame
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, FPS
 from screens.start import StartScreen
+from screens.game import GameScreen
 from screens.end import EndScreen
 
 def main():
-    """
-    The main function that initializes the game and starts the game loop.
-
-    This function sets up the game window, handles input, updates the game state, and controls the frame rate.
-
-    Returns:
-        None
-    """
-    pygame.init()  # Initialize the Pygame library
-
-    from screens.game import GameScreen
-    from screens.end import EndScreen
+    pygame.init() 
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))  
     pygame.display.set_caption("Database Hell")  
@@ -33,8 +23,10 @@ def main():
 
         pygame.display.flip()  
 
-        # Control the frame rate using the clock
-        clock.tick(FPS)  # This limits the loop to run at a specified frames per second (FPS)
+        # This limits the loop to run at a specified frames per second (FPS)
+        # The clock is refreshed in frames and in our case, it is refreshed every 1/60 seconds
+        # This is how the player can update for falling and jumping
+        clock.tick(FPS)  
 
         # Switch to next screen
         if current_screen.next_screen:
